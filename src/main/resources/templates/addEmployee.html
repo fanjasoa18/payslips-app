@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link href = "css/styles.css" rel = "stylesheet"/>
+    <title>Ajouter un employé</title>
+</head>
+<body>
+
+<div th:insert="fragments/composants :: headerAndMenu"></div>
+
+    <div class="page-title">
+        <h1>Ajouter un employé</h1>
+    </div>
+
+<div class="scrollable-form">
+    <form class="form_form" th:action="@{/addEmployee}" method="post" th:object="${employee}" enctype="multipart/form-data">
+        <label for="firstName">Prénom:</label>
+        <input type="text" id="firstName" name="firstName" required><br>
+        <label for="lastName">Nom:</label>
+        <input type="text" id="lastName" name="lastName" required><br>
+        <label for="dateOfBirth">Date de naissance:</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" required><br>
+        <label for="employeeMatricule">Numéro matricule:</label>
+        <input type="text" id="employeeMatricule" name="employeeMatricule" required><br>
+        <div>
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="imageFile">
+        </div>
+        <label for="sex">Sexe:</label>
+        <select id="sex" name="sex">
+            <option value="H">Homme</option>
+            <option value="F">Femme</option>
+        </select>
+        <label for="phoneNumbers">Téléphone(s):</label>
+        <input type="text" id="phoneNumbers" name="phoneNumbers" placeholder="Séparés par des virgules" required><br>
+        <label for="address">Adresse:</label>
+        <input type="text" id="address" name="address" required><br>
+        <label for="emailPerso">Email personnel:</label>
+        <input type="text" id="emailPerso" name="emailPerso" required><br>
+        <label for="emailPro">Email professionnel:</label>
+        <input type="text" id="emailPro" name="emailPro" required><br>
+        <label for="cinNumber">Numéro CIN:</label>
+        <input type="text" id="cinNumber" name="cinNumber" required><br>
+        <label for="delivranceDate">Date de délivrance du CIN:</label>
+        <input type="date" id="delivranceDate" name="delivranceDate" required><br>
+        <label for="delivrancePlace">Lieu de délivrance du CIN:</label>
+        <input type="text" id="delivrancePlace" name="delivrancePlace" required><br>
+        <label for="function">Fonction:</label>
+        <input type="text" id="function" name="function" required><br>
+        <label for="numberOfKids">Nombre d’enfants:</label>
+        <input type="text" id="numberOfKids" name="numberOfKids" required><br>
+        <label for="hireDate">date d'embauche:</label>
+        <input type="date" id="hireDate" name="hireDate" required><br>
+        <label for="departureDate">date de démission:</label>
+        <input type="date" id="departureDate" name="departureDate" required><br>
+        <label for="csp">catégorie socio-professionnelle:</label>
+        <select id="csp" name="csp">
+            <option value="M">M</option>
+            <option value="O">OS</option>
+            <option value="P">OP</option>
+            <option value="C">CA1</option>
+            <option value="A">CA2</option>
+        </select>
+        <label for="cnaps">CNAPS:</label>
+        <input type="text" id="cnaps" name="cnaps" required><br>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+</div>
+
+    <div th:insert="fragments/composants :: footer"></div>
+
+</body>
+</html>

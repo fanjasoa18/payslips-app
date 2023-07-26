@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href = "/css/styles.css" rel = "stylesheet"/>
+    <title>Détails de l'employé</title>
+</head>
+<body>
+
+<div th:insert="fragments/composants :: headerAndMenu"></div>
+
+<div class="page-title">
+    <h1>Détails de l'employé</h1>
+</div>
+
+    <div>
+        <div class="details-container">
+            <div>
+                <p>Image:
+                    <span th:if="${employee.image == null}">Aucune image</span>
+                    <img th:if="${employee.image != null}" th:src="@{'data:image/jpg;base64,' + ${employee.image}}" alt="Image de l'employé"/>
+                </p>
+            </div>
+            <div>
+                <p>Nom: <span th:text="${employee.firstName}"></span></p>
+                <p>Prénom: <span th:text="${employee.lastName}"></span></p>
+                <p>Date de naissance: <span th:text="${employee.dateOfBirth}"></span></p>
+                <p>Numéro matricule: <span th:text="${employee.employeeMatricule}"></span></p>
+                <p>sexe: <span th:text="${employee.sex}"></span></p>
+                <p>Téléphone: <span th:text="${employee.phoneNumbers}"></span></p>
+                <p>Adresse: <span th:text="${employee.address}"></span></p>
+                <p>Email personnel: <span th:text="${employee.emailPerso}"></span></p>
+                <p>Email professionnel: <span th:text="${employee.emailPro}"></span></p>
+                <p>Numéro CIN: <span th:text="${employee.cinNumber}"></span></p>
+                <p>Date du CIN: <span th:text="${employee.delivranceDate}"></span></p>
+                <p>Lieu du CIN: <span th:text="${employee.delivrancePlace}"></span></p>
+                <p>Fonction: <span th:text="${employee.function}"></span></p>
+                <p>Nombre d'enfants: <span th:text="${employee.numberOfKids}"></span></p>
+                <p>Date d'embauche: <span th:text="${employee.hireDate}"></span></p>
+                <p>Date de démission: <span th:text="${employee.departureDate}"></span></p>
+                <p>csp: <span th:text="${employee.csp}"></span></p>
+                <p>cnaps: <span th:text="${employee.cnaps}"></span></p>
+            </div>
+        </div>
+
+        <div th:insert="fragments/composants :: footer"></div>
+
+    </div>
+</body>
+</html>

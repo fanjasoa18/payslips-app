@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link href = "/css/styles.css" rel = "stylesheet"/>
+    <title>Liste des employés</title>
+</head>
+<body>
+    <div th:insert="fragments/composants :: headerAndMenu"></div>
+    <div class="form-container">
+        <form th:action="@{/employees}" method="get">
+            <input type="text" name="searchFirstName" placeholder="Rechercher par nom...">
+            <input type="text" name="searchLastName" placeholder="Rechercher par prénom...">
+            <select name="searchSex">
+                <option value="H">Homme</option>
+                <option value="F">Femme</option>
+            </select>
+            <input type="text" name="searchFunction" placeholder="Rechercher par prénom...">
+            <input type="date" name="searchHireDate" placeholder="Rechercher par date d'embauche...">
+            <input type="date" name="searchDepartureDate" placeholder="Rechercher par date de démission...">
+            <select name="sortType">
+                <option value="first_name_asc">Nom(croissant)</option>
+                <option value="first_name_desc">Nom(décroissant)</option>
+                <option value="last_name_asc">Prénom(croissant)</option>
+                <option value="last_name_desc">Prénom(décroissant)</option>
+                <option value="sex_asc">Sexe(croissant)</option>
+                <option value="sex_desc">Sexe(décroissant)</option>
+                <option value="function_asc">Fonction(croissant)</option>
+                <option value="function_desc">Fonction(décroissant)</option>
+                <option value="hire_date_asc">Date d'embauche(croissant)</option>
+                <option value="hire_date_desc">Date d'embauche(décroissant)</option>
+                <option value="departure_date_asc">Date de démission(croissant)</option>
+                <option value="departure_date_desc">Date de démission(décroissant)</option>
+            </select>
+            <button type="submit">Rechercher et Trier</button>
+        </form>
+
+        <form class="form-export" th:action="@{/exportToCSV(sort=${sort}, search=${searchQuery})}" method="get">
+            <button type="submit" class="btn btn-primary">Export to CSV</button>
+        </form>
+    </div>
+
+    <div class="page-title">
+        <h1>Liste des employés</h1>
+    </div>
+
+    <table>
+        <tr>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Prénoms</th>
+            <th>Sexe</th>
+            <th>Fonction</th>
+            <th>Date d'embauche</th>
+            <th>Date de démission</th>
+        </tr>
+        <tr th:each="employee : ${employees}">
+            <td>
+                <a th:href="@{'/employees/'+ ${employee.id}+'/details'}">
+                    [[${employee.employeeMatricule}]]
+                </a>
+            </td>
+            <td th:text="${employee.firstName}"></td>
+            <td th:text="${employee.lastName}"></td>
+            <td th:text="${employee.sex}"></td>
+            <td th:text="${employee.function}"></td>
+            <td th:text="${employee.hireDate}"></td>
+            <td th:text="${employee.departureDate}"></td>
+        </tr>
+    </table>
+
+    <div th:insert="fragments/composants :: footer"></div>
+
+
+</body>
+</html>
+

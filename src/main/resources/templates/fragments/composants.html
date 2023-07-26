@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App</title>
+</head>
+<body>
+
+<header th:fragment="headerAndMenu">
+    <div class="header">
+        <div class="logo">
+            <img th:src="@{${entreprise.logo}}" alt="Logo of the entreprise">
+            <h1 th:text="${entreprise.name}"></h1>
+        </div>
+        <nav class="menu">
+            <a href="/employees">Listes</a>
+            <a href="/addEmployee">Ajouter</a>
+        </nav>
+        <button class="logout-button" type="submit">Se déconnecter</button>
+    </div>
+
+</header>
+
+<footer th:fragment="footer">
+    <div class="foot">
+        <div class="foot_one">
+            <p>Description: <span th:text="${entreprise.description}"></span></p>
+            <p>Slogan: <span th:text="${entreprise.slogan}"></span></p>
+        </div>
+        <div class="foot_two">
+            <p>Nif: <span th:text="${entreprise.nif}"></span></p>
+            <p>Stat: <span th:text="${entreprise.stat}"></span></p>
+            <p>Rcs: <span th:text="${entreprise.rcs}"></span></p>
+        </div>
+        <div class="foot_three">
+            <p>Adresse: <span th:text="${entreprise.address}"></span></p>
+            <p>Email: <span th:text="${entreprise.email}"></span></p>
+            <p>Téléphone: <span th:text="${entreprise.phonenumber}"></span></p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
